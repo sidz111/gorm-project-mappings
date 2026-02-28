@@ -8,5 +8,5 @@ type Project struct {
 	ID         int       `gorm:"primaryKey;autoincrement" json:"id"`
 	Title      string    `json:"title"`
 	AssignDate time.Time `json:"assignDate"`
-	EmployeeID int       `gorm:"unique" json:"employeeId"`
+	EmployeeID int       `gorm:"unique;constraint:OnDelete:CASCADE" json:"employeeId"`
 }
