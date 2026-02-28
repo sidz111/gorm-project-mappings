@@ -1,4 +1,4 @@
-module gihtub.com/sidz111/employee-mapping-gorm
+module github.com/sidz111/employee-mapping-gorm
 
 go 1.25.6
 
