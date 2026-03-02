@@ -59,8 +59,8 @@ func validateEmployee(employee *model.Employee) error {
 	if employee.Salary <= 0 {
 		return fmt.Errorf("employee salary must be greater than 0")
 	}
-	if employee.Project.ID == 0 {
-		return fmt.Errorf("employee project ID is required")
-	}
+	// if employee.Project.ID == 0 {
+	// 	return fmt.Errorf("employee project ID is required")
+	// }
 	return nil
 }
