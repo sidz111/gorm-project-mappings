@@ -57,6 +57,9 @@ func (r *projectRepo) Update(ctx context.Context, project *model.Project) error 
 }
 func (r *projectRepo) Delete(ctx context.Context, id int) error {
 	result := r.db.WithContext(ctx).Delete(&model.Project{}, id)
+	if result.Error != nil {
+		return result.Error
+	}
 	if result.RowsAffected == 0 {
 		return fmt.Errorf("project not found")
 	}
