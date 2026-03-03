@@ -9,4 +9,5 @@ type Project struct {
 	Title      string    `json:"title"`
 	AssignDate time.Time `json:"assignDate"`
 	EmployeeID int       `gorm:"unique;constraint:OnDelete:CASCADE" json:"employeeId"`
+	Employee   Employee  `gorm:"foreignKey:EmployeeID"`
 }

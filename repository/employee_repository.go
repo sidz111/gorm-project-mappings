@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"time"
 
 	"github.com/sidz111/employee-mapping-gorm/model"
 	"gorm.io/gorm"
@@ -24,6 +25,7 @@ func NewEmployeeRepository(db *gorm.DB) EmployeeRepository {
 }
 
 func (r *employeeRepository) Create(ctx context.Context, employee *model.Employee) error {
+	employee.Project.AssignDate = time.Now()
 	return r.db.WithContext(ctx).Create(employee).Error
 }
 func (r *employeeRepository) GetByID(ctx context.Context, id int) (*model.Employee, error) {
@@ -41,6 +43,7 @@ func (r *employeeRepository) GetAll(ctx context.Context) ([]model.Employee, erro
 	return employees, nil
 }
 func (r *employeeRepository) Update(ctx context.Context, employee *model.Employee) error {
+	employee.Project.AssignDate = time.Now()
 	if err := r.db.WithContext(ctx).Save(employee).Error; err != nil {
 		return err
 	}

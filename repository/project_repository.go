@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/sidz111/employee-mapping-gorm/model"
 	"gorm.io/gorm"
@@ -25,6 +26,8 @@ func NewProjectRepository(db *gorm.DB) ProjectRepository {
 }
 
 func (r *projectRepo) Create(ctx context.Context, project *model.Project) error {
+	project.AssignDate = time.Now()
+	// project.AssignDate = time.Now().Format("2006-01-02")
 	return r.db.WithContext(ctx).Create(project).Error
 }
 
